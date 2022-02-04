@@ -1,0 +1,21 @@
+<ul class="participants__list">
+  <li
+    class="participants__item participant"
+    *ngFor="let participant of participants"
+  >
+    <div class="participant__params">
+      <span class="participant__param">{{participant.id}}</span>
+      <span class="participant__param">{{participant.name}}</span>
+      <span class="participant__param">{{participant.language}}</span>
+      <span class="participant__param">{{participant.sportsType}}</span>
+      <span class="participant__param">{{participant.eventDate | date: 'shortDate'}}</span>
+      <span class="participant__param">{{participant.place}}</span>
+    </div>
+
+    <div class="participant__buttons">
+      <a [routerLink]="['../', participant.id, 'update']">Update</a>
+      <a [routerLink]="['../', participant.id, 'read']">Detail</a>
+      <button type="button" (click)="delete(participant.id)">Delete</button>
+    </div>
+  </li>
+</ul>

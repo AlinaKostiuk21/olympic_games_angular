@@ -1,0 +1,66 @@
+<form
+  class="participant__form form"
+  [formGroup]="participantsForm"
+  (submit)="updateParticipant()"
+>
+  <label for="form-input-id">ID:</label>
+  <input
+    type="text"
+    id="form-input-id"
+    formControlName="id"
+    name="id"
+    disabled
+  >
+
+  <label for="form-input-name">Name:</label>
+  <input
+    type="text"
+    id="form-input-name"
+    formControlName="name"
+    name="name"
+  >
+
+  <label for="form-input-lang">Language:</label>
+  <input
+    type="text"
+    id="form-input-lang"
+    formControlName="language"
+    name="language"
+  >
+
+  <label for="form-input-sport">Sports type:</label>
+  <select
+    id="form-input-sport"
+    formControlName="sportsType"
+    name="sport"
+  >
+    <option [value]="SportsType.ChooseSportsType">{{SportsType.ChooseSportsType}}</option>
+    <option [value]="SportsType.Athletics">{{SportsType.Athletics}}</option>
+    <option [value]="SportsType.Boxing">{{SportsType.Boxing}}</option>
+    <option [value]="SportsType.Fencing">{{SportsType.Fencing}}</option>
+    <option [value]="SportsType.Gymnastics">{{SportsType.Gymnastics}}</option>
+    <option [value]="SportsType.Swimming">{{SportsType.Swimming}}</option>
+  </select>
+
+  <label for="form-input-date">Date:</label>
+  <input
+    type="date"
+    id="form-input-date"
+    formControlName="eventDate"
+    name="date"
+  >
+
+  <label for="form-input-place">Place:</label>
+  <input
+    type="number"
+    id="form-input-place"
+    formControlName="place"
+    name="place"
+  >
+
+  <div class="form__buttons">
+    <button type="button" [routerLink]="'../../all'">Back</button>
+    <button type="reset" (click)="participantsForm.reset()">Reset</button>
+    <button type="submit" [disabled]="participantsForm.invalid">Save</button>
+  </div>
+</form>

@@ -17,7 +17,7 @@ export class Participant {
   }
 
   static generateId() {
-    return (Math.random() * 100);
+    return Math.round((Math.random() * 100));
   }
 }
 

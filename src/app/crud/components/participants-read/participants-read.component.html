@@ -1,1 +1,13 @@
-<p>participants-read works!</p>
+<div class="participant__params">
+  <span class="participant__param">{{participant.id}}</span>
+  <span class="participant__param">{{participant.name}}</span>
+  <span class="participant__param">{{participant.language}}</span>
+  <span class="participant__param">{{participant.sportsType}}</span>
+  <span class="participant__param">{{participant.eventDate | date:'shortDate'}}</span>
+  <span class="participant__param">{{participant.place}}</span>
+
+  <div>
+    <button type="button" [routerLink]="'../../all'">Back</button>
+    <button [routerLink]="['../', 'update']">Update</button>
+  </div>
+</div>

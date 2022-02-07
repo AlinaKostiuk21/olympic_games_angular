@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
-import {Participant} from "../models/participant.model";
+import {Participant, SportsType} from "../models/participant.model";
 
 @Injectable({
   providedIn: 'root'
@@ -8,52 +8,50 @@ import {Participant} from "../models/participant.model";
 
 export class ParticipantService {
 
-  private participants: Participant[] = [];
+  private participants: Participant[] = [
+    new Participant({
+      id: 1,
+      name: 'China',
+      language: 'Chinese',
+      sportsType: SportsType.Athletics,
+      eventDate: new Date('8-15-20'),
+      place: 7
+    })];
 
   constructor() {
     this.init();
   }
 
   public init() {
-    const participant1 = new Participant({
-      id: 1,
-      name: 'China',
-      language: 'Chinese',
-      sportsType: 'Athletics',
-      eventDate: '8/15/20',
-      place: 7
-    });
-
-    this.create(participant1).subscribe();
   }
 
   public getAll(): Observable<Participant[]> {
     return of(this.participants);
   }
 
-  public getById(participantId: number): Observable<Participant> {
+  public getById(participantId: number): Observable<Participant> | undefined {
     if (!participantId || !this.participants.length) {
+      console.log("firstgetbyid_____");
       return;
     }
     const selectedParticipant = this.participants.find((participant: Participant) => participant.id === participantId);
+
+    if (!selectedParticipant) {
+      console.log("participants____", this.participants);
+      console.log("secondgetbyid_____");
+      return;
+    }
+    console.log('selectedParticipant_______',selectedParticipant)
 
     return of(selectedParticipant);
   }
 
   public create(participant: Participant): Observable<Participant> {
-    if (!participant){
-      return;
-    }
-
     this.participants.push(participant);
     return of(participant);
   }
 
   public update(participant: Participant): Observable<Participant> {
-    if (!participant || !participant.id){
-      return;
-    }
-
     const selectedParticipantIndex = this.participants.findIndex((member: Participant) => member.id === participant.id);
     this.participants[selectedParticipantIndex] = participant;
 
@@ -61,7 +59,7 @@ export class ParticipantService {
   }
 
   public delete(participantId: number): Observable<boolean> {
-    if (!participantId){
+    if (!participantId) {
       return of(false);
     }
 

@@ -8,16 +8,18 @@ import { ParticipantsDeleteComponent } from './components/participants-delete/pa
 import { ParticipantsReadComponent } from './components/participants-read/participants-read.component';
 import { ParticipantsUpdateComponent } from './components/participants-update/participants-update.component';
 import { IndexComponent } from './components/index/index.component';
-
-
+import {ParticipantsAllComponent} from "./components/participants-all/participants-all.component";
+import { ParticipantFormComponent } from './components/participant-form/participant-form.component';
 
 @NgModule({
   declarations: [
+    ParticipantsAllComponent,
     ParticipantsCreateComponent,
     ParticipantsDeleteComponent,
     ParticipantsReadComponent,
     ParticipantsUpdateComponent,
-    IndexComponent
+    IndexComponent,
+    ParticipantFormComponent
   ],
   imports: [
     CommonModule,

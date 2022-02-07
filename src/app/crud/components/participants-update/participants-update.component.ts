@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Participant, SportsType} from "../../models/participant.model";
 import {FormBuilder, Validators} from "@angular/forms";
 import {ParticipantService} from "../../services/participants.service";
@@ -12,14 +12,7 @@ import {DatePipe} from "@angular/common";
 })
 export class ParticipantsUpdateComponent implements OnInit {
 
-  participantsForm = this.formBuilder.group({
-    id: [0, Validators.required],
-    name: ['', Validators.required],
-    language: ['', Validators.required],
-    sportsType: [SportsType.ChooseSportsType, Validators.required],
-    eventDate: [new Date(), Validators.required],
-    place: [0, Validators.required]
-  })
+  participant: Participant = new Participant();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,37 +23,31 @@ export class ParticipantsUpdateComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe((params: {participant_id: number}) => {
-      const participantId = params.participant_id;
+    this.activatedRoute.params.subscribe((params) => {
+      console.log('params________', params);
+      const participantId = Number(params['participant_id']);
       this.getParticipantById(participantId);
     })
   }
 
-  get SportsType() {
-    return SportsType;
-  }
-
   getParticipantById(participantId: number) {
-    this.participantService.getById(participantId)
-      .subscribe((member: Participant) => {
+    console.log('__________', participantId);
+
+    let participantObservable = this.participantService.getById(participantId);
+    if (participantObservable) {
+      participantObservable.subscribe((member: Participant) => {
+        console.log('2__________', member);
         if (!member) {
           return;
         }
-
-        this.updateForm(member);
+        console.log('__________', member);
+        this.participant = member;
       })
+    }
   }
 
-  updateForm(participant: Participant) {
-    this.participantsForm.patchValue({
-      ... participant,
-      eventDate: this.datePipe.transform(participant.eventDate, 'M/d/yy')
-    });
-  }
-
-  updateParticipant() {
-    const updatedParticipant = this.participantsForm.value;
-    this.participantService.update(updatedParticipant)
+  updateParticipant(participant: Participant) {
+    this.participantService.update(participant)
       .subscribe((member) => {
           if (member) {
             this.router.navigate(['../../all'], { relativeTo: this.activatedRoute })

@@ -22,7 +22,7 @@ const routes: Routes = [
         component: ParticipantsCreateComponent,
       },
       {
-        path: ':student_id',
+        path: ':participant_id',
         children: [
           {
             path: 'read',

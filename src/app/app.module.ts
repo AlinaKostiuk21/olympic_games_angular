@@ -3,16 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ParticipantsAllComponent } from './components/participants-all/participants-all.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {CrudModule} from "./crud/crud.module";
+
 
 @NgModule({
   declarations: [
-    AppComponent,
-    ParticipantsAllComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    CrudModule
   ],
   providers: [],
   bootstrap: [AppComponent]

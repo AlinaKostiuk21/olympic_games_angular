@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {ParticipantService} from "../../services/participants.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {Participant} from "../../models/participant.model";
 
 @Component({
   selector: 'app-participants-create',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ParticipantsCreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private participantsService: ParticipantService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
 
   ngOnInit(): void {
   }
 
+  create(participant: Participant) {
+    this.participantsService.create(participant)
+      .subscribe((member) => {
+        if (member) {
+          this.router.navigate(['../all'], { relativeTo: this.activatedRoute })
+        }
+      })
+  }
 }

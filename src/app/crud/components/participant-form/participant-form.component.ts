@@ -1,13 +1,14 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Participant, SportsType} from "../../models/participant.model";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DatePipe} from "@angular/common";
+import {Participant, SportsType} from "../../models/participant.model";
 
 @Component({
   selector: 'app-participant-form',
   templateUrl: './participant-form.component.html',
   styleUrls: ['./participant-form.component.scss']
 })
+
 export class ParticipantFormComponent implements OnInit, OnChanges {
 
   @Input() participant = new Participant();
@@ -26,7 +27,7 @@ export class ParticipantFormComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes && ['participant'] && this.participant){
+    if (changes && ['participant'] && this.participant) {
       this.updateForm(this.participant)
     }
   }
@@ -48,7 +49,7 @@ export class ParticipantFormComponent implements OnInit, OnChanges {
 
   updateForm(participant: Participant) {
     this.participantForm.patchValue({
-      ... participant,
+      ...participant,
       eventDate: this.datePipe.transform(participant.eventDate, 'M/d/yy')
     });
   }

@@ -19,7 +19,7 @@ import { ParticipantFormComponent } from './components/participant-form/particip
     ParticipantsReadComponent,
     ParticipantsUpdateComponent,
     IndexComponent,
-    ParticipantFormComponent
+    ParticipantFormComponent,
   ],
   imports: [
     CommonModule,

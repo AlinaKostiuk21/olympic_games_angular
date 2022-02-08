@@ -31,17 +31,13 @@ export class ParticipantService {
 
   public getById(participantId: number): Observable<Participant> | undefined {
     if (!participantId || !this.participants.length) {
-      console.log("firstgetbyid_____");
       return;
     }
     const selectedParticipant = this.participants.find((participant: Participant) => participant.id === participantId);
 
     if (!selectedParticipant) {
-      console.log("participants____", this.participants);
-      console.log("secondgetbyid_____");
       return;
     }
-    console.log('selectedParticipant_______',selectedParticipant)
 
     return of(selectedParticipant);
   }

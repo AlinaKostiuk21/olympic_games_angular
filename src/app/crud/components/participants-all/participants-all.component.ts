@@ -24,10 +24,13 @@ export class ParticipantsAllComponent implements OnInit {
 
   get() {
     this.participantsService.getAll()
-      .subscribe((participants: Participant[]) => this.participants = participants);
+      .subscribe((participants: Participant[]) => {
+        console.log('participants___', participants);
+        return this.participants = participants;
+      });
   }
 
-  delete(participantId: number) {
+  delete(participantId: string) {
     this.participantsService.delete(participantId)
       .subscribe(() => this.get());
   }

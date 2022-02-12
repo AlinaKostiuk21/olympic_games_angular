@@ -1,5 +1,7 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export class Participant {
-  id: number;
+  id: string;
   name: string;
   language: string;
   sportsType: SportsType;
@@ -16,8 +18,8 @@ export class Participant {
     this.place = place || 1;
   }
 
-  static generateId() {
-    return Math.round((Math.random() * 100));
+  static generateId(): string {
+    return uuidv4();
   }
 }
 

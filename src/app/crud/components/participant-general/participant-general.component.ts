@@ -7,6 +7,7 @@ import {ParticipantService} from "../../services/participants.service";
 @Component({
   templateUrl: 'participant-general.component.html'
 })
+
 export abstract class ParticipantGeneralComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   participant: Participant = new Participant();
@@ -15,12 +16,12 @@ export abstract class ParticipantGeneralComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
-      const participantId = Number(params['participant_id']);
+      const participantId = params['participant_id'];
       this.getParticipantById(participantId);
     })
   }
 
-  getParticipantById(participantId: number) {
+  getParticipantById(participantId: string) {
     const subscription = this.participantService.getById(participantId)?.subscribe((member: Participant) => {
       if (!member) {
         return;

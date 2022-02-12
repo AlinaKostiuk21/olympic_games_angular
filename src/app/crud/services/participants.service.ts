@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from "rxjs";
 import {Participant, SportsType} from "../models/participant.model";
+import {v4 as uuidv4} from "uuid";
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class ParticipantService {
 
   private participants: Participant[] = [
     new Participant({
-      id: 1,
+      id: uuidv4(),
       name: 'China',
       language: 'Chinese',
       sportsType: SportsType.Athletics,
@@ -29,7 +30,7 @@ export class ParticipantService {
     return of(this.participants);
   }
 
-  public getById(participantId: number): Observable<Participant> | undefined {
+  public getById(participantId: string): Observable<Participant> | undefined {
     if (!participantId || !this.participants.length) {
       return;
     }
@@ -43,6 +44,7 @@ export class ParticipantService {
   }
 
   public create(participant: Participant): Observable<Participant> {
+    console.log('before member', participant);
     this.participants.push(participant);
     return of(participant);
   }
@@ -54,7 +56,7 @@ export class ParticipantService {
     return of(participant);
   }
 
-  public delete(participantId: number): Observable<boolean> {
+  public delete(participantId: string): Observable<boolean> {
     if (!participantId) {
       return of(false);
     }

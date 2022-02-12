@@ -55,7 +55,7 @@ export class ParticipantFormComponent implements OnInit, OnChanges {
   }
 
   submit() {
-    const participant: Partial<Participant> = this.participantForm.value;
+    const participant: Participant = new Participant(this.participantForm.value);
 
     this.submitted.emit(participant);
   }

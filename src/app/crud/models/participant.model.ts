@@ -1,4 +1,4 @@
-import { v4 as uuidv4 } from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 
 export class Participant {
   id: string;
@@ -15,7 +15,7 @@ export class Participant {
     this.language = language || 'Unknown language';
     this.sportsType = sportsType || SportsType.ChooseSportsType;
     this.eventDate = eventDate || new Date();
-    this.place = place || 1;
+    this.place = place || 0;
   }
 
   static generateId(): string {

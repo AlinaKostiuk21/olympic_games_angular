@@ -7,7 +7,6 @@ import {ParticipantsUpdateComponent} from "./components/participants-update/part
 import {ParticipantsDeleteComponent} from "./components/participants-delete/participants-delete.component";
 import {ParticipantsAllComponent} from "./components/participants-all/participants-all.component";
 
-
 const routes: Routes = [
   {
     path: '',
@@ -45,11 +44,11 @@ const routes: Routes = [
       },
     ]
   }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class CrudRoutingModule { }
+
+export class CrudRoutingModule {}

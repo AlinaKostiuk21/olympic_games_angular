@@ -1,6 +1,5 @@
 import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {DatePipe} from "@angular/common";
 import {Participant} from "../../models/participant.model";
 import {ParticipantService} from "../../services/participants.service";
 import {ParticipantGeneralComponent} from "../participant-general/participant-general.component";
@@ -15,9 +14,8 @@ import {ParticipantGeneralComponent} from "../participant-general/participant-ge
 export class ParticipantsUpdateComponent extends ParticipantGeneralComponent {
 
   constructor(
-    override activatedRoute: ActivatedRoute,
     protected router: Router,
-    protected datePipe: DatePipe,
+    override activatedRoute: ActivatedRoute,
     override participantService: ParticipantService,
   ) {
     super();

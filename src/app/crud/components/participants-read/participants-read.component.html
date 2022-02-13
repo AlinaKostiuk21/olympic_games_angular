@@ -1,13 +1,18 @@
-<div class="participant__params">
-  <span class="participant__param">{{participant.id}}</span>
-  <span class="participant__param">{{participant.name}}</span>
-  <span class="participant__param">{{participant.language}}</span>
-  <span class="participant__param">{{participant.sportsType}}</span>
-  <span class="participant__param">{{participant.eventDate | date:'shortDate'}}</span>
-  <span class="participant__param">{{participant.place}}</span>
-
-  <div>
-    <button type="button" [routerLink]="'../../all'">Back</button>
-    <button [routerLink]="['../', 'update']">Update</button>
-  </div>
+<div class="container">
+  <mat-card class="participant__params">
+    <mat-card-header>
+      <mat-card-title class="participant__param">{{participant.name}}</mat-card-title>
+      <mat-card-subtitle class="participant__param">{{participant.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p class="participant__param">Language: {{participant.language}}</p>
+      <p class="participant__param">Sport type: {{participant.sportsType}}</p>
+      <p class="participant__param">Event date: {{participant.eventDate | date:'shortDate'}}</p>
+      <p class="participant__param">Place: {{participant.place}}</p>
+    </mat-card-content>
+    <mat-card-actions class="participant__buttons">
+      <a mat-raised-button type="button" [routerLink]="'/all'">Back</a>
+      <button mat-raised-button type="button" [routerLink]="['../', 'update']">Update</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

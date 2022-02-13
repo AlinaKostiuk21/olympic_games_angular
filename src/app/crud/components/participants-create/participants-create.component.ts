@@ -19,14 +19,11 @@ export class ParticipantsCreateComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   create(participant: Participant) {
-    console.log('000000', participant);
     const subscription = this.participantsService.create(participant)
       .subscribe((member) => {
-        console.log('member', member);
         if (member) {
           this.router.navigate(['/all'], {relativeTo: this.activatedRoute})
         }

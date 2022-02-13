@@ -1,0 +1,13 @@
+.container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.participant {
+  &__params {
+    padding: 40px 60px;
+  }
+}

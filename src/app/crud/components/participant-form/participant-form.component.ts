@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {DatePipe} from "@angular/common";
 import {Participant, SportsType} from "../../models/participant.model";
 
 @Component({
@@ -18,7 +17,6 @@ export class ParticipantFormComponent implements OnInit, OnChanges {
 
   constructor(
     private formBuilder: FormBuilder,
-    private datePipe: DatePipe,
   ) {
     this.initForm();
   }
@@ -34,10 +32,9 @@ export class ParticipantFormComponent implements OnInit, OnChanges {
 
   initForm() {
     this.participantForm = this.formBuilder.group({
-      id: [0, Validators.required],
       name: ['', Validators.required],
       language: ['', Validators.required],
-      sportsType: [SportsType.ChooseSportsType, Validators.required],
+      sportsType: [SportsType, Validators.required],
       eventDate: [new Date(), Validators.required],
       place: [0, Validators.required]
     });
@@ -49,8 +46,7 @@ export class ParticipantFormComponent implements OnInit, OnChanges {
 
   updateForm(participant: Participant) {
     this.participantForm.patchValue({
-      ...participant,
-      eventDate: this.datePipe.transform(participant.eventDate, 'M/d/yy')
+      ...participant
     });
   }
 

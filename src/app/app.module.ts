@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import {CrudModule} from "./crud/crud.module";
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import {CrudModule} from "./crud/crud.module";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    CrudModule
+    CrudModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

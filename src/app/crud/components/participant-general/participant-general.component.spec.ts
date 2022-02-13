@@ -14,6 +14,7 @@ describe('ParticipantGeneralComponent', () => {
   });
 
   beforeEach(() => {
+    // @ts-ignore
     fixture = TestBed.createComponent(ParticipantGeneralComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

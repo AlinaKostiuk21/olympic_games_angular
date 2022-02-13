@@ -1,0 +1,19 @@
+.participants {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-content: center;
+  }
+
+  &__item {
+    display: inline-block;
+    margin: 10px 0;
+  }
+}
+
+.participant {
+  &__params {
+    padding: 30px;
+  }
+}

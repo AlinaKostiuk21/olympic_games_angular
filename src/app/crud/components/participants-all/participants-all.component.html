@@ -3,21 +3,24 @@
     class="participants__item participant"
     *ngFor="let participant of participants"
   >
-    <div class="participant__params">
-      <span class="participant__param">{{participant.id}}</span>
-      <span class="participant__param">{{participant.name}}</span>
-      <span class="participant__param">{{participant.language}}</span>
-      <span class="participant__param">{{participant.sportsType}}</span>
-      <span class="participant__param">{{participant.eventDate | date:'shortDate'}}</span>
-      <span class="participant__param">{{participant.place}}</span>
-    </div>
+    <mat-card class="participant__params">
+      <mat-card-header>
+        <mat-card-title class="participant__param">{{participant.name}}</mat-card-title>
+        <mat-card-subtitle class="participant__param">ID: {{participant.id}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <p class="participant__param">Language: {{participant.language}}</p>
+        <p class="participant__param">Sport type: {{participant.sportsType}}</p>
+        <p class="participant__param">Event date: {{participant.eventDate | date:'shortDate'}}</p>
+        <p class="participant__param">Place: {{participant.place}}</p>
+      </mat-card-content>
 
-    <div class="participant__buttons">
-      <a [routerLink]="['../', participant.id, 'update']">Update</a>
-      <a [routerLink]="['../', participant.id, 'read']">Detail</a>
-      <button type="button" (click)="delete(participant.id)">Delete</button>
-    </div>
+      <mat-card-actions class="participant__buttons">
+        <a mat-raised-button [routerLink]="['../', participant.id, 'update']">Update</a>
+        <a mat-raised-button [routerLink]="['../', participant.id, 'read']">Detail</a>
+        <button mat-raised-button type="button" (click)="openDialog(participant)">Delete</button>
+      </mat-card-actions>
+    </mat-card>
   </li>
 </ul>
-
-<button type="button" (click)="redirectToCreateForm()">Create new</button>
+<button mat-raised-button type="button" (click)="redirectToCreateForm()">Create new</button>

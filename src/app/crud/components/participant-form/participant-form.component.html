@@ -1,58 +1,98 @@
-<form
-  class="participant__form form"
-  [formGroup]="participantForm"
-  (submit)="submit()"
->
-  <label for="form-input-name">Name:</label>
-  <input
-    type="text"
-    id="form-input-name"
-    formControlName="name"
-    name="name"
+<div class="container">
+  <form
+    class="participant__form form"
+    [formGroup]="participantForm"
+    (submit)="submit()"
   >
+    <mat-form-field appearance="outline" class="form-element">
+      <mat-label>Name:</mat-label>
+      <input
+        matInput
+        type="text"
+        placeholder="Name"
+        formControlName="name"
+        name="name"
+      >
+      <mat-error *ngIf="participantForm.controls['name'].invalid && participantForm.controls['name'].touched"
+                 class="alert alert-danger">
+        <span *ngIf="participantForm.controls['name'].errors?.['required']">
+          Name is required.
+        </span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="form-input-lang">Language:</label>
-  <input
-    type="text"
-    id="form-input-lang"
-    formControlName="language"
-    name="language"
-  >
+    <mat-form-field appearance="outline" class="form-element">
+      <mat-label>Language:</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="language"
+        name="language"
+      >
+      <mat-error *ngIf="participantForm.controls['language'].invalid && participantForm.controls['language'].touched"
+                 class="alert alert-danger">
+        <span *ngIf="participantForm.controls['language'].errors?.['required']">
+          Language is required.
+        </span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="form-input-sport">Sports type:</label>
-  <select
-    id="form-input-sport"
-    formControlName="sportsType"
-    name="sport"
-  >
-    <option [value]="SportsType.ChooseSportsType">{{SportsType.ChooseSportsType}}</option>
-    <option [value]="SportsType.Athletics">{{SportsType.Athletics}}</option>
-    <option [value]="SportsType.Boxing">{{SportsType.Boxing}}</option>
-    <option [value]="SportsType.Fencing">{{SportsType.Fencing}}</option>
-    <option [value]="SportsType.Gymnastics">{{SportsType.Gymnastics}}</option>
-    <option [value]="SportsType.Swimming">{{SportsType.Swimming}}</option>
-  </select>
+    <mat-form-field appearance="outline" class="form-element">
+      <mat-label>Sports type:</mat-label>
+      <mat-select
+        formControlName="sportsType"
+        name="sport"
+      >
+        <mat-option [value]="" disabled>{{SportsType.ChooseSportsType}}</mat-option>
+        <mat-option [value]="SportsType.Athletics">{{SportsType.Athletics}}</mat-option>
+        <mat-option [value]="SportsType.Boxing">{{SportsType.Boxing}}</mat-option>
+        <mat-option [value]="SportsType.Fencing">{{SportsType.Fencing}}</mat-option>
+        <mat-option [value]="SportsType.Gymnastics">{{SportsType.Gymnastics}}</mat-option>
+        <mat-option [value]="SportsType.Swimming">{{SportsType.Swimming}}</mat-option>
+      </mat-select>
+      <mat-error *ngIf="participantForm.controls['sportsType'].hasError('required')">Please choose a sport type
+      </mat-error>
+    </mat-form-field>
 
-  <label for="form-input-date">Date:</label>
-  <input
-    type="date"
-    id="form-input-date"
-    formControlName="eventDate"
-    name="date"
-  >
+    <mat-form-field appearance="outline" class="form-element">
+      <mat-label>Date:</mat-label>
+      <input
+        matInput
+        formControlName="eventDate"
+        name="date"
+        [matDatepicker]="picker"
+      >
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="participantForm.controls['eventDate'].invalid && participantForm.controls['eventDate'].touched"
+                 class="alert alert-danger">
+        <span *ngIf="participantForm.controls['eventDate'].errors?.['required']">
+          Date is required.
+        </span>
+      </mat-error>
+    </mat-form-field>
 
-  <label for="form-input-place">Place:</label>
-  <input
-    type="number"
-    id="form-input-place"
-    formControlName="place"
-    name="place"
-  >
+    <mat-form-field appearance="outline" class="form-element">
+      <mat-label>Place:</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="place"
+        name="place"
+      >
+      <mat-error *ngIf="participantForm.controls['place'].invalid && participantForm.controls['place'].touched"
+                 class="alert alert-danger">
+        <span *ngIf="participantForm.controls['place'].errors?.['required']">
+          Place is required.
+        </span>
+      </mat-error>
+    </mat-form-field>
 
-  <div class="form__buttons">
-    <button type="button" [routerLink]="'/all'">Back</button>
-    <button type="reset" (click)="participantForm.reset()">Reset</button>
-    <button type="submit" [disabled]="participantForm.invalid">Save</button>
-  </div>
-</form>
+    <div class="form-element buttons">
+      <button mat-raised-button type="button" [routerLink]="'/all'">Back</button>
+      <button mat-raised-button type="reset" (click)="participantForm.reset()">Reset</button>
+      <button mat-raised-button color="accent" type="submit" [disabled]="participantForm.invalid">Save</button>
+    </div>
+  </form>
+</div>
 

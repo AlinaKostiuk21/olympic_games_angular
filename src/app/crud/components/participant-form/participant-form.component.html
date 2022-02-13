@@ -2,7 +2,7 @@
   <form
     class="participant__form form"
     [formGroup]="participantForm"
-    (submit)="submit()"
+    (submit)="submit(participant.id)"
   >
     <mat-form-field appearance="outline" class="form-element">
       <mat-label>Name:</mat-label>
@@ -91,7 +91,12 @@
     <div class="form-element buttons">
       <button mat-raised-button type="button" [routerLink]="'/all'">Back</button>
       <button mat-raised-button type="reset" (click)="participantForm.reset()">Reset</button>
-      <button mat-raised-button color="accent" type="submit" [disabled]="participantForm.invalid">Save</button>
+      <button
+        mat-raised-button
+        color="accent"
+        type="submit"
+        [disabled]="participantForm.invalid"
+      >Save</button>
     </div>
   </form>
 </div>

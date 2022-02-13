@@ -8,41 +8,42 @@ import {Participant, SportsType} from "../models/participant.model";
 
 export class ParticipantService {
 
-  private participants: Participant[] = [
-    new Participant({
-      id: '1',
-      name: 'United Kingdom',
-      language: 'English',
-      sportsType: SportsType.Athletics,
-      eventDate: new Date('8-15-20'),
-      place: 3
-    }),
-    new Participant({
-      id: '2',
-      name: 'China',
-      language: 'Chinese',
-      sportsType: SportsType.Swimming,
-      eventDate: new Date('7-10-20'),
-      place: 7
-    }),
-    new Participant({
-      id: '3',
-      name: 'Canada',
-      language: 'French, English',
-      sportsType: SportsType.Gymnastics,
-      eventDate: new Date('8-22-20'),
-      place: 8
-    }),
-    new Participant({
-      id: '4',
-      name: 'Spain',
-      language: 'Spanish',
-      sportsType: SportsType.Fencing,
-      eventDate: new Date('7-28-20'),
-      place: 14
-    })];
+  private participants: Participant[] = [];
 
   constructor() {
+    this.participants = [
+      new Participant({
+        id: '1',
+        name: 'United Kingdom',
+        language: 'English',
+        sportsType: SportsType.Athletics,
+        eventDate: new Date('8-15-20'),
+        place: 3
+      }),
+      new Participant({
+        id: '2',
+        name: 'China',
+        language: 'Chinese',
+        sportsType: SportsType.Swimming,
+        eventDate: new Date('7-10-20'),
+        place: 7
+      }),
+      new Participant({
+        id: '3',
+        name: 'Canada',
+        language: 'French, English',
+        sportsType: SportsType.Gymnastics,
+        eventDate: new Date('8-22-20'),
+        place: 8
+      }),
+      new Participant({
+        id: '4',
+        name: 'Spain',
+        language: 'Spanish',
+        sportsType: SportsType.Fencing,
+        eventDate: new Date('7-28-20'),
+        place: 14
+      })];
     this.init();
   }
 
@@ -57,6 +58,7 @@ export class ParticipantService {
     if (!participantId || !this.participants.length) {
       return;
     }
+
     const selectedParticipant = this.participants.find((participant: Participant) => participant.id === participantId);
 
     if (!selectedParticipant) {

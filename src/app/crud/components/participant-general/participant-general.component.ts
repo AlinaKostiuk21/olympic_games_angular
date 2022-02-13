@@ -26,6 +26,7 @@ export abstract class ParticipantGeneralComponent implements OnInit, OnDestroy {
       if (!member) {
         return;
       }
+
       this.participant = member;
     });
     if (subscription) {
